@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.appleframework.message.provider.dao.PushLogMapper" >
+  <resultMap id="BaseResultMap" type="com.appleframework.message.entity.PushLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="mode" property="mode" jdbcType="INTEGER" />
+    <result column="tmp_group" property="tmpGroup" jdbcType="VARCHAR" />
+    <result column="tmp_code" property="tmpCode" jdbcType="VARCHAR" />
+    <result column="receiver" property="receiver" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="data" property="data" jdbcType="VARCHAR" />
+    <result column="count_fail" property="countFail" jdbcType="INTEGER" />
+    <result column="count_ok" property="countOk" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="SMALLINT" />
+    <result column="msg_return" property="msgReturn" jdbcType="VARCHAR" />
+    <result column="msg_id" property="msgId" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, mode, tmp_group, tmp_code, receiver, title, content, data, count_fail, count_ok, 
+    state, msg_return, msg_id, is_delete, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from msg_push_log
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from msg_push_log
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.appleframework.message.entity.PushLog" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into msg_push_log (mode, tmp_group, tmp_code, 
+      receiver, title, content, 
+      data, count_fail, count_ok, 
+      state, msg_return, msg_id, 
+      is_delete, create_time, update_time
+      )
+    values (#{mode,jdbcType=INTEGER}, #{tmpGroup,jdbcType=VARCHAR}, #{tmpCode,jdbcType=VARCHAR}, 
+      #{receiver,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, 
+      #{data,jdbcType=VARCHAR}, #{countFail,jdbcType=INTEGER}, #{countOk,jdbcType=INTEGER}, 
+      #{state,jdbcType=SMALLINT}, #{msgReturn,jdbcType=VARCHAR}, #{msgId,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.appleframework.message.entity.PushLog" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into msg_push_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mode != null" >
+        mode,
+      </if>
+      <if test="tmpGroup != null" >
+        tmp_group,
+      </if>
+      <if test="tmpCode != null" >
+        tmp_code,
+      </if>
+      <if test="receiver != null" >
+        receiver,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="data != null" >
+        data,
+      </if>
+      <if test="countFail != null" >
+        count_fail,
+      </if>
+      <if test="countOk != null" >
+        count_ok,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="msgReturn != null" >
+        msg_return,
+      </if>
+      <if test="msgId != null" >
+        msg_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mode != null" >
+        #{mode,jdbcType=INTEGER},
+      </if>
+      <if test="tmpGroup != null" >
+        #{tmpGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="tmpCode != null" >
+        #{tmpCode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null" >
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="data != null" >
+        #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="countFail != null" >
+        #{countFail,jdbcType=INTEGER},
+      </if>
+      <if test="countOk != null" >
+        #{countOk,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="msgReturn != null" >
+        #{msgReturn,jdbcType=VARCHAR},
+      </if>
+      <if test="msgId != null" >
+        #{msgId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.appleframework.message.entity.PushLog" >
+    update msg_push_log
+    <set >
+      <if test="mode != null" >
+        mode = #{mode,jdbcType=INTEGER},
+      </if>
+      <if test="tmpGroup != null" >
+        tmp_group = #{tmpGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="tmpCode != null" >
+        tmp_code = #{tmpCode,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null" >
+        receiver = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="data != null" >
+        data = #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="countFail != null" >
+        count_fail = #{countFail,jdbcType=INTEGER},
+      </if>
+      <if test="countOk != null" >
+        count_ok = #{countOk,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=SMALLINT},
+      </if>
+      <if test="msgReturn != null" >
+        msg_return = #{msgReturn,jdbcType=VARCHAR},
+      </if>
+      <if test="msgId != null" >
+        msg_id = #{msgId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.appleframework.message.entity.PushLog" >
+    update msg_push_log
+    set mode = #{mode,jdbcType=INTEGER},
+      tmp_group = #{tmpGroup,jdbcType=VARCHAR},
+      tmp_code = #{tmpCode,jdbcType=VARCHAR},
+      receiver = #{receiver,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      data = #{data,jdbcType=VARCHAR},
+      count_fail = #{countFail,jdbcType=INTEGER},
+      count_ok = #{countOk,jdbcType=INTEGER},
+      state = #{state,jdbcType=SMALLINT},
+      msg_return = #{msgReturn,jdbcType=VARCHAR},
+      msg_id = #{msgId,jdbcType=VARCHAR},
+      is_delete = #{isDelete,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<!-- 
+	<import resource="classpath*:META-INF/apple/rocketmq-producer2.xml" />
+	
+	<import resource="classpath*:META-INF/apple/rocketmq-producer2.xml" />
+	
+	<import resource="classpath*:META-INF/apple/rocketmq-consumer.xml" />
+	
+	<bean id="pushMessageConsumer" class="com.appleframework.message.provider.mq.PushMessageConsumer" init-method="init">
+    	<property name="consumer" ref="consumer" />
+   		<property name="topic" value="${consumer.topic}" />
+		<property name="tags" value="${consumer.tags}" /> 
+    </bean>
+     -->
+	
+</beans> 

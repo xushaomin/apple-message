@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<dubbo:application name="${application.name}" owner="${application.owner}" />
+	<dubbo:protocol name="dubbo" port="${service.port}" />
+
+	<dubbo:registry protocol="zookeeper" address="${registry.address}" 
+		file="${registry.file:/work/data/dubbo/apple-message-provider/dubbo-registry.cache}"/>
+	
+	<dubbo:provider 
+		timeout="${provider.timeout:8000}" 
+		threads="${provider.threads:1000}" 
+		accepts="${provider.accepts:500}" />
+
+
+	<dubbo:service ref="smsCaptchaService"
+		interface="com.appleframework.message.service.SmsCaptchaService" version="1.0" />
+		
+	<dubbo:service ref="pushMessageService"
+		interface="com.appleframework.message.service.PushMessageService" version="1.0">
+		<dubbo:method name="push" async="true" return="false" />
+	</dubbo:service>
+	
+	<dubbo:service ref="pushTemplateService"
+		interface="com.appleframework.message.service.PushTemplateService" version="1.0" />
+	
+	<dubbo:service ref="smsTemplateService"
+		interface="com.appleframework.message.service.SmsTemplateService" version="1.0" />
+			
+	<dubbo:service ref="smsSendService"
+		interface="com.appleframework.message.service.SmsSendService" version="1.0" />
+		
+	<dubbo:service ref="thirdAuthService"
+		interface="com.appleframework.message.service.ThirdAuthService" version="1.0" />
+		
+	<dubbo:service ref="mailTemplateService"
+		interface="com.appleframework.message.service.MailTemplateService" version="1.0" />
+			
+	<dubbo:service ref="mailSendService"
+		interface="com.appleframework.message.service.MailSendService" version="1.0" />
+	
+
+</beans> 

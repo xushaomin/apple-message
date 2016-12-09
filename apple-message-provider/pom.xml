@@ -1,0 +1,180 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.appleframework.message</groupId>
+		<artifactId>apple-message</artifactId>
+		<version>1.2.0</version>
+	</parent>
+	<artifactId>apple-message-provider</artifactId>
+	<name>apple-message-provider</name>
+	<url>http://mvnrepo.appleframework.com</url>
+
+	<properties>
+		<freemarker.version>2.3.21</freemarker.version>
+	</properties>
+
+	<dependencies>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- apple -->
+		<dependency>
+			<groupId>com.appleframework</groupId>
+			<artifactId>apple-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.appleframework</groupId>
+			<artifactId>apple-distributed</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.appleframework.orm</groupId>
+			<artifactId>apple-orm-mybatis</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.appleframework.config</groupId>
+			<artifactId>apple-config-diamond</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.appleframework.cache</groupId>
+			<artifactId>apple-cache-redisson</artifactId>
+		</dependency>
+		
+		<dependency>
+  			<groupId>com.appleframework.id</groupId>
+  			<artifactId>apple-id-snowflake</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.appleframework.boot</groupId>
+			<artifactId>apple-boot-spring</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.appleframework.qos</groupId>
+			<artifactId>apple-qos-collector-spring</artifactId>
+		</dependency>
+		
+		<!-- 
+		<dependency>
+			<groupId>com.appleframework.logs</groupId>
+			<artifactId>apple-logs-api-log4j</artifactId>
+		</dependency>
+		 -->
+		 
+		<!--spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>1.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${freemarker.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.5</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.appleframework.message</groupId>
+			<artifactId>apple-message-service</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>cn.jpush.api</groupId>
+    		<artifactId>jpush-client</artifactId>
+    		<version>3.1.3</version>
+		</dependency>
+		
+		<dependency>
+     		<groupId> org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-javamail_1.4_spec </artifactId>
+            <version>1.7.1</version>
+        </dependency>
+        <dependency>
+       		<groupId>org.apache.commons</groupId>
+     		<artifactId>commons-email</artifactId>
+      		<version>1.4</version>
+        </dependency>
+		
+				
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.3</version>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<descriptor>src/main/assembly/assembly.xml</descriptor>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<!-- 
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>Local Nexus Releases Repository</name>
+			<url>http://mvnrepo.appleframework.com/nexus/content/repositories/releases</url>
+		</repository>
+
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>Local Nexus Snapshots Repository</name>
+			<url>http://mvnrepo.appleframework.com/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+	 -->
+
+</project>

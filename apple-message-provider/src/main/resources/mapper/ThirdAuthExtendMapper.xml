@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.appleframework.message.provider.dao.extend.ThirdAuthExtendMapper">
+	<resultMap id="BaseResultMap" type="com.appleframework.message.entity.ThirdAuth">
+		<id column="id" property="id" jdbcType="BIGINT" />
+		<result column="type" property="type" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="third_key" property="thirdKey" jdbcType="VARCHAR" />
+		<result column="third_secret" property="thirdSecret" jdbcType="VARCHAR" />
+		<result column="third_extend" property="thirdExtend" jdbcType="VARCHAR" />
+		<result column="third_class" property="thirdClass" jdbcType="VARCHAR" />
+		<result column="is_delete" property="isDelete" jdbcType="BIT" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, type, name, third_key, third_secret, third_extend, third_class,
+		is_delete, create_time, update_time
+	</sql>	
+	<select id="selectByAll" resultMap="BaseResultMap">
+		select
+			<include refid="Base_Column_List" />
+		from
+			msg_third_auth
+		where
+			is_delete = 0
+	</select>
+	
+	<select id="selectByType" resultMap="BaseResultMap">
+		select
+			<include refid="Base_Column_List" />
+		from
+			msg_third_auth
+		where
+			is_delete = 0 and
+			type = ${type}
+	</select>
+	
+	<select id="selectByPage" resultMap="BaseResultMap">
+		select
+			<include refid="Base_Column_List" />
+		from
+			msg_third_auth
+		where 
+			is_delete = 0
+			<if test="so.name != null">
+				and name like '%${so.name}%'
+			</if>
+			<if test="so.type != null">
+				and type = ${so.type}
+			</if>
+			order by id desc
+	</select>
+</mapper>

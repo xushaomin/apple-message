@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.appleframework.message.provider.dao.extend.MailTemplateExtendMapper" >
+  <resultMap id="BaseResultMap" type="com.appleframework.message.entity.MailTemplate" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="tmp_group" property="tmpGroup" jdbcType="VARCHAR" />
+    <result column="tmp_code" property="tmpCode" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="template" property="template" jdbcType="VARCHAR" />
+    <result column="third_auth_id" property="thirdAuthId" jdbcType="BIGINT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, tmp_group, tmp_code, title, template, third_auth_id, remark, is_delete, 
+    create_time, update_time
+  </sql>
+  <select id="selectByGroupAndCode" resultMap="BaseResultMap">
+		select
+			<include refid="Base_Column_List" />
+		from
+			msg_mail_template
+		where
+			is_delete = 0 and
+			tmp_group = '${group}' and
+			tmp_code = '${code}'
+			limit 1
+	</select>
+	
+	<select id="selectByPage" resultMap="BaseResultMap">
+		select
+			<include refid="Base_Column_List" />
+		from
+			msg_mail_template
+		where 
+			is_delete = 0
+			<if test="keyword != null">
+				and (name like '%${keyword}%' or tmp_code like '%${keyword}%' or tmp_group like '%${keyword}%')
+			</if>
+			order by id desc
+	</select>
+</mapper>

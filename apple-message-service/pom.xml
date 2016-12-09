@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.appleframework.message</groupId>
+		<artifactId>apple-message</artifactId>
+		<version>1.2.0</version>
+	</parent>
+	<artifactId>apple-message-service</artifactId>
+	<name>apple-message-service</name>
+	<url>http://mvnrepo.appleframework.com</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.appleframework.message</groupId>
+			<artifactId>apple-message-bean</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.appleframework</groupId>
+			<artifactId>apple-exception</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.appleframework</groupId>
+			<artifactId>apple-model</artifactId>
+		</dependency>
+	</dependencies>
+</project>

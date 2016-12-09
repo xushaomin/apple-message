@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.appleframework.message.provider.dao.SmsTemplateMapper" >
+  <resultMap id="BaseResultMap" type="com.appleframework.message.entity.SmsTemplate" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="tmp_group" property="tmpGroup" jdbcType="VARCHAR" />
+    <result column="tmp_code" property="tmpCode" jdbcType="VARCHAR" />
+    <result column="template" property="template" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="third_auth_id" property="thirdAuthId" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, tmp_group, tmp_code, template, remark, third_auth_id, is_delete, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from msg_sms_template
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from msg_sms_template
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.appleframework.message.entity.SmsTemplate" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into msg_sms_template (name, tmp_group, tmp_code, 
+      template, remark, third_auth_id, 
+      is_delete, create_time, update_time
+      )
+    values (#{name,jdbcType=VARCHAR}, #{tmpGroup,jdbcType=VARCHAR}, #{tmpCode,jdbcType=VARCHAR}, 
+      #{template,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{thirdAuthId,jdbcType=BIGINT}, 
+      #{isDelete,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.appleframework.message.entity.SmsTemplate" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into msg_sms_template
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="tmpGroup != null" >
+        tmp_group,
+      </if>
+      <if test="tmpCode != null" >
+        tmp_code,
+      </if>
+      <if test="template != null" >
+        template,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="thirdAuthId != null" >
+        third_auth_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tmpGroup != null" >
+        #{tmpGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="tmpCode != null" >
+        #{tmpCode,jdbcType=VARCHAR},
+      </if>
+      <if test="template != null" >
+        #{template,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdAuthId != null" >
+        #{thirdAuthId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.appleframework.message.entity.SmsTemplate" >
+    update msg_sms_template
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="tmpGroup != null" >
+        tmp_group = #{tmpGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="tmpCode != null" >
+        tmp_code = #{tmpCode,jdbcType=VARCHAR},
+      </if>
+      <if test="template != null" >
+        template = #{template,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdAuthId != null" >
+        third_auth_id = #{thirdAuthId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.appleframework.message.entity.SmsTemplate" >
+    update msg_sms_template
+    set name = #{name,jdbcType=VARCHAR},
+      tmp_group = #{tmpGroup,jdbcType=VARCHAR},
+      tmp_code = #{tmpCode,jdbcType=VARCHAR},
+      template = #{template,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      third_auth_id = #{thirdAuthId,jdbcType=BIGINT},
+      is_delete = #{isDelete,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
