@@ -70,12 +70,11 @@ fi
 
 JAVA_MEM_OPTS=" -server -Xmx2g -Xms1g -Xmn256m -XX:PermSize=128m -Xss256k -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:+CMSParallelRemarkEnabled -XX:+UseCMSCompactAtFullCollection -XX:LargePageSizeInBytes=128m -XX:+UseFastAccessorMethods -XX:+UseCMSInitiatingOccupancyOnly -XX:CMSInitiatingOccupancyFraction=70 "
 
-
 echo -e "Starting the $SERVER_NAME ...\c"
 nohup java $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS -classpath $CONF_DIR:$LIB_JARS com.appleframework.boot.Main env=$ENV > $STDOUT_FILE 2>&1 &
 
 COUNT=0
-while [ $COUNT -lt 1 ]; do    
+while [ $COUNT -lt 1 ]; do
     echo -e ".\c"
     sleep 1 
     if [ -n "$SERVER_PORT" ]; then

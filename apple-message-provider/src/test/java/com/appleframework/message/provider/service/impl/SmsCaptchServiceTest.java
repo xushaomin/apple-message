@@ -19,7 +19,7 @@ public class SmsCaptchServiceTest {
 	@Test
 	public void testSendCaptcha() {
 		try {
-			smsCaptchaService.sendCaptcha("parent", "12", "13760189357");
+			smsCaptchaService.sendCaptcha("jz-yaya", "1", "13760189357");
 			System.in.read();
 		} catch (Exception e) {
 			e.printStackTrace();

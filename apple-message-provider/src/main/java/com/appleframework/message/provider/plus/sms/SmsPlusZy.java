@@ -16,8 +16,8 @@ public class SmsPlusZy implements SmsMessagePlus {
 		
 	public String SMS_URL = "http://211.147.244.114:9801/CASServer/SmsAPI/SendMessage.jsp";
 	
-	private String uid = "82766";
-	private String pwd = "quanwei2011";	
+	private String uid;
+	private String pwd;
 	
 	/*private String sendSMS(String postData, String postUrl) {
         try {
