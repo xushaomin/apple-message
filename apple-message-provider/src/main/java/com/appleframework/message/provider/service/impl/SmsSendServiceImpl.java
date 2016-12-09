@@ -1,5 +1,6 @@
 package com.appleframework.message.provider.service.impl;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -13,6 +14,7 @@ import com.alibaba.fastjson.JSON;
 import com.appleframework.message.entity.SmsLog;
 import com.appleframework.message.entity.SmsTemplate;
 import com.appleframework.message.provider.exception.MessageException;
+import com.appleframework.message.provider.plus.MessagePlus;
 import com.appleframework.message.provider.plus.SmsMessagePlus;
 import com.appleframework.message.provider.service.MessagePlusService;
 import com.appleframework.message.provider.service.SmsLogService;
@@ -67,30 +69,32 @@ public class SmsSendServiceImpl implements SmsSendService {
 		// 发送的代码
 		String thirdAuthId = template.getThirdAuthId();
 		
-		if(null  != thirdAuthId) {
+		if (null != thirdAuthId) {
 			int countOk = 0;
-	        int countFail = 0;
-	        String msgReturn = null;
-	        String msgId = null;
-	        for (int i = 0; i < 3; i++) {
-	        	try {
-	        		SmsMessagePlus plus = (SmsMessagePlus)messagePlusService.genrate(thirdAuthId);
-	        		msgId = plus.doSend(log.getMobile(), log.getContent());
-	        		break;
-	    		} catch (MessageException e) {
-	    			countFail ++;
-	    			if(null != e.getCode())
-	    				msgReturn = e.getCode();
-	    			else
-	    				msgReturn = e.getMessage();
-	    		}
-	        }
-	        
+			int countFail = 0;
+			String msgReturn = null;
+			String msgId = null;
+
+			List<MessagePlus> messagePlusList = messagePlusService.genrate(thirdAuthId);
+			for (MessagePlus messagePlus : messagePlusList) {
+				try {
+					SmsMessagePlus plus = (SmsMessagePlus) messagePlus;
+					msgId = plus.doSend(log.getMobile(), log.getContent());
+					break;
+				} catch (MessageException e) {
+					countFail++;
+					if (null != e.getCode())
+						msgReturn = e.getCode();
+					else
+						msgReturn = e.getMessage();
+				}
+			}
+
 			// 发送成功
-	        log.setMsgId(msgId);
+			log.setMsgId(msgId);
 			log.setCountOk(countOk);
 			log.setCountFail(countFail);
-			if(countOk > 0)
+			if (countOk > 0)
 				log.setState((short) 2);
 			else {
 				log.setState((short) 1);

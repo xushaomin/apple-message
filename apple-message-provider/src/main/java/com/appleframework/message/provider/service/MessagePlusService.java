@@ -10,7 +10,5 @@ public interface MessagePlusService {
 	
 	public List<MessagePlus> genrate(String ids);
 	
-	public void remove(Long id);
-
 }
 
