@@ -90,17 +90,21 @@ public class SmsSendServiceImpl implements SmsSendService {
 				}
 			}
 
-			// 发送成功
-			log.setMsgId(msgId);
-			log.setCountOk(countOk);
-			log.setCountFail(countFail);
-			if (countOk > 0)
-				log.setState((short) 2);
-			else {
-				log.setState((short) 1);
-				log.setMsgReturn(msgReturn);
+			try {
+				// 发送成功
+				log.setMsgId(msgId);
+				log.setCountOk(countOk);
+				log.setCountFail(countFail);
+				if (countOk > 0)
+					log.setState((short) 2);
+				else {
+					log.setState((short) 1);
+					log.setMsgReturn(msgReturn);
+				}
+				msmsLogService.update(log);
+			} catch (Exception e) {
+				logger.error("更新SMS日志失败: " + e.getMessage());
 			}
-			msmsLogService.update(log);
 		}
 	}
 	
