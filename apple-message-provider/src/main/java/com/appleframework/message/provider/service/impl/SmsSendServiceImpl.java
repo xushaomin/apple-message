@@ -63,7 +63,7 @@ public class SmsSendServiceImpl implements SmsSendService {
 			}
 			msmsLogService.save(log);
 		} catch (Exception e) {
-			logger.error("存储SMS日志失败: " + log.toString());
+			logger.error("存储SMS日志失败: " + e.getMessage());
 		}
 		
 		// 发送的代码
