@@ -10,9 +10,9 @@ import com.appleframework.message.provider.exception.MessageException;
 import com.appleframework.message.provider.plus.SmsMessagePlus;
 import com.appleframework.boot.utils.HttpUtils;
 
-public class SmsPlusZy implements SmsMessagePlus {
+public class SmsPlusChanzor implements SmsMessagePlus {
 
-	private static final Log logger = LogFactory.getLog(SmsPlusZy.class);
+	private static final Log logger = LogFactory.getLog(SmsPlusChanzor.class);
 		
 	public String SMS_URL = "http://211.147.244.114:9801/CASServer/SmsAPI/SendMessage.jsp";
 	
