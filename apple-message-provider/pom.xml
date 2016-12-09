@@ -45,6 +45,7 @@
 		<dependency>
 			<groupId>com.appleframework.cache</groupId>
 			<artifactId>apple-cache-redisson</artifactId>
+			<version>${cache.version}</version>
 		</dependency>
 		
 		<dependency>
@@ -61,13 +62,6 @@
 			<groupId>com.appleframework.qos</groupId>
 			<artifactId>apple-qos-collector-spring</artifactId>
 		</dependency>
-		
-		<!-- 
-		<dependency>
-			<groupId>com.appleframework.logs</groupId>
-			<artifactId>apple-logs-api-log4j</artifactId>
-		</dependency>
-		 -->
 		 
 		<!--spring -->
 		<dependency>

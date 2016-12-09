@@ -2,6 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.appleframework</groupId>
+		<artifactId>apple-parent</artifactId>
+		<version>14</version>
+	</parent>
 	<groupId>com.appleframework.message</groupId>
 	<artifactId>apple-message</artifactId>
 	<version>1.2.0</version>
@@ -9,172 +14,7 @@
 
 	<name>apple-message</name>
 	<url>http://mvnrepo.appleframework.com</url>
-	
-	<properties>
-		<apple.version>0.1.5.RELEASE</apple.version>
-		<config.version>0.2.0.RELEASE</config.version>
-		<boot.version>0.2.8.RELEASE</boot.version>
-		<spring.version>4.2.0.RELEASE</spring.version>
-		<orm.version>0.1.3.RELEASE</orm.version>
-		<jms.version>0.1.0.RELEASE</jms.version>
-		<cache.version>0.1.9.RELEASE</cache.version>
-		<qos.version>0.0.6.RELEASE</qos.version>
-		<id.version>0.0.9.RELEASE</id.version>
-		<aspectj.version>1.8.5</aspectj.version>	
-		<logs.version>2.1.2.RELEASE</logs.version>
-	</properties>
-	
-	<dependencyManagement>
-		
-		<dependencies>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.12</version>
-				<scope>test</scope>
-			</dependency>
-			
-			<!-- apple -->
-			<dependency>
-				<groupId>com.appleframework</groupId>
-				<artifactId>apple-core</artifactId>
-				<version>${apple.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.appleframework</groupId>
-				<artifactId>apple-distributed</artifactId>
-				<version>${apple.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.appleframework</groupId>
-				<artifactId>apple-web</artifactId>
-				<version>${apple.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.appleframework</groupId>
-				<artifactId>apple-model</artifactId>
-				<version>${apple.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.appleframework</groupId>
-				<artifactId>apple-exception</artifactId>
-				<version>${apple.version}</version>
-			</dependency>
-			
-			<!-- config -->
-			<dependency>
-				<groupId>com.appleframework.config</groupId>
-				<artifactId>apple-config-diamond</artifactId>
-				<version>${config.version}</version>
-			</dependency>
-			
-			<!-- boot -->
-			<dependency>
-				<groupId>com.appleframework.boot</groupId>
-				<artifactId>apple-boot-spring</artifactId>
-				<version>${boot.version}</version>
-			</dependency>
 
-			<!-- orm -->
-			<dependency>
-		  		<groupId>com.appleframework.orm</groupId>
-		  		<artifactId>apple-orm-mybatis</artifactId>
-		  		<version>${orm.version}</version>
-			</dependency>
-									
-			<!-- cache -->
-			<dependency>
-			  	<groupId>com.appleframework.cache</groupId>
-			  	<artifactId>apple-cache-redisson</artifactId>
-			  	<version>${cache.version}</version>
-			</dependency>
-			
-			<!-- qos -->
-			<dependency>
-			  	<groupId>com.appleframework.qos</groupId>
-			  	<artifactId>apple-qos-collector-spring</artifactId>
-			  	<version>${qos.version}</version>
-			</dependency>
-			
-			<!-- aspectj -->
-			<dependency>
-				<groupId>org.aspectj</groupId>
-				<artifactId>aspectjrt</artifactId>
-				<version>${aspectj.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.aspectj</groupId>
-				<artifactId>aspectjweaver</artifactId>
-				<version>${aspectj.version}</version>
-			</dependency>
-			
-			<!-- spring -->
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aop</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-beans</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-core</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-context-support</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-tx</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-test</artifactId>
-				<version>${spring.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-orm</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-web</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-webmvc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-jdbc</artifactId>
-				<version>${spring.version}</version>
-			</dependency>
-			
-			<dependency>
-  				<groupId>com.appleframework.id</groupId>
-  				<artifactId>apple-id-snowflake</artifactId>
-  				<version>${id.version}</version>
-			</dependency>
-
-		</dependencies>
-	</dependencyManagement>
-	 
 	<modules>
 		<module>apple-message-bean</module>
 		<module>apple-message-service</module>
@@ -321,5 +161,5 @@
 			<url>http://mvnrepo.appleframework.com:8081/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
-	
+
 </project>

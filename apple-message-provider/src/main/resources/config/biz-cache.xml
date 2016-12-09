@@ -20,7 +20,7 @@
 	<import resource="classpath*:META-INF/apple/apple-cache-redisson-master.xml"/>
 	
 	<bean id="smsCacheManager"
-		class="com.appleframework.cache.redis.RedissonBucketCacheManager">
+		class="com.appleframework.cache.redisson.RedissonBucketCacheManager">
 		<property name="redisson" ref="redisson" />
 	</bean>
 	
